@@ -17,4 +17,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public void ReryActive() => SceneManager.LoadScene(0);
+
+    public int ActiveScene => SceneManager.GetActiveScene().buildIndex;
 }

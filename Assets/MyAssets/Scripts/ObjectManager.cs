@@ -25,9 +25,13 @@ public class ObjectManager : MonoBehaviour
 
     [SerializeField] private GameObject[] _obstacles;
 
+    [SerializeField] private GameObject[] _guns;
+
     [SerializeField] private Transform _obstacleParent;
 
     private List<Vector3> _obstaclePoints;
+
+    private int _obstacleCount;
 
     private void Start() => StartCoroutine(ObstacleCreate());
 
@@ -35,19 +39,23 @@ public class ObjectManager : MonoBehaviour
 
     private IEnumerator ObstacleCreate()
     {
+        yield return new WaitForSeconds(.1f);
+
         var random = new System.Random();
 
-        var suffleVec = _obstaclePoints.OrderBy(item => random.Next());
+        var suffleVec = _obstaclePoints.OrderBy(item => random.Next()).ToList();
 
         int length = _obstacles.Length;
 
-        yield return new WaitForSeconds(.1f);
+        _obstacleCount = GameManager.instance.ActiveScene == 0 ? Random.Range(20, 30) : Random.Range(150, 200);
 
-        foreach (Vector3 pos in suffleVec)
+        for (int i = 0; i < _obstacleCount; i++)
         {
             int rnd = Random.Range(0, length);
 
-            Instantiate(_obstacles[rnd], pos, _obstacles[rnd].transform.rotation, _obstacleParent);
+            Instantiate(_obstacles[rnd], suffleVec[i], _obstacles[rnd].transform.rotation, _obstacleParent);
         }
     }
+
+    public Transform GetGun(int i = 0) => Instantiate(_guns[i]).transform;
 }

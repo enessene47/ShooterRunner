@@ -34,7 +34,7 @@ namespace Mechanics
 
         public void BaseStart()
         {
-            rate = Screen.width / 150.0f;
+            rate = Screen.width / 250.0f;
 
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
                 Input.multiTouchEnabled = false;

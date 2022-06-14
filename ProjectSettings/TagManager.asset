@@ -7,6 +7,8 @@ TagManager:
   - Bullet
   - Obstacle
   - Floor
+  - Gate
+  - EndGame
   layers:
   - Default
   - TransparentFX
