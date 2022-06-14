@@ -24,16 +24,17 @@ namespace Mechanics
         [Header("Others")]
         private float startPosX;
         private float deltaMousePos;
-
+        
         private float rate;
 
         bool isTouchScreen;
+
 
         [HideInInspector] public Vector3 desiredPos = Vector3.zero;
 
         public void BaseStart()
         {
-            rate = Screen.width / 100.0f;
+            rate = Screen.width / 150.0f;
 
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
                 Input.multiTouchEnabled = false;
@@ -77,8 +78,6 @@ namespace Mechanics
             }
         }
 
-        private void QuaternionLerp(Vector3 vec) => transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(vec), Time.deltaTime * 5);
-
         void ControlOnHold()
         {
             var mousePos = Input.mousePosition;
@@ -89,6 +88,8 @@ namespace Mechanics
                 QuaternionLerp(new Vector3(0, 30, 0));
             else if (mousePos.x < startPosX - rate)
                 QuaternionLerp(new Vector3(0, -30, 0));
+            else if (mousePos.x == startPosX)
+                QuaternionLerp(Vector3.zero, 2);
 
             PositionMethod();
         }
@@ -107,6 +108,8 @@ namespace Mechanics
 
             ResetValues();
         }
+
+        private void QuaternionLerp(Vector3 vec, float speed = 5) => transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(vec), Time.deltaTime * speed);
     }
 }
 

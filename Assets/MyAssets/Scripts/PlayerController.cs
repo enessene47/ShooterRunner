@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerController : SwipeMecLast
 {
+    [Header("Player Control")]
+
+    [Space(25)]
+
     [SerializeField] private Transform[] _guns;
 
     [SerializeField] private Transform _bulletPoint;

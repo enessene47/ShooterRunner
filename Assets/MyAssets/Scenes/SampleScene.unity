@@ -739,7 +739,7 @@ MonoBehaviour:
     type: 3}
   objectPrefabBulletEffect: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2,
     type: 3}
-  poolSizeBullet: 7
+  poolSizeBullet: 21
 --- !u!4 &582181030
 Transform:
   m_ObjectHideFlags: 0

@@ -24,8 +24,6 @@ public class PoolManager : MonoBehaviour
         else
             return;
 
-        poolSizeBullet *= PlayerPrefs.GetInt("Gun") + 1;
-
         pooledBullet = new Queue<Rigidbody>();
 
         pooledBulletEffect = new Queue<ParticleSystem>();
