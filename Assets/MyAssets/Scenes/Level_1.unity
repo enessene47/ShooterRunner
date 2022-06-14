@@ -335,6 +335,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 20501438}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &209217002 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5389626674414341405, guid: e883fe9efa20b234c89f3de7ca5d7d6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1823857351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &214758417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -812,6 +818,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 582181032}
+    - target: {fileID: 8895987145162813914, guid: cc90f8d0eb10c9e4a950da0bf8aff70d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc90f8d0eb10c9e4a950da0bf8aff70d, type: 3}
 --- !u!114 &383340041 stripped
@@ -1276,10 +1287,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e964fb0d0966fd84f92cb696f6e1c551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPrefabDiamond: {fileID: 5281168581547654744, guid: c2e73d64c570a594186b05eb97815aca,
+    type: 3}
   objectPrefabBullet: {fileID: 1808265353395088, guid: 296b6c6ad62626c48aef7fa6c5e2a9a8,
     type: 3}
   objectPrefabBulletEffect: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2,
     type: 3}
+  poolSizeDiamond: 7
   poolSizeBullet: 21
 --- !u!4 &582181030
 Transform:
@@ -1322,7 +1336,9 @@ MonoBehaviour:
   - {fileID: 1311246062939086, guid: 787a31f2409a3f64c987faeb2a72ab86, type: 3}
   _gate: {fileID: 0}
   _obstacleParent: {fileID: 1597783715}
-  _gateParent: {fileID: 0}
+  _gateParent: {fileID: 4574243262341506, guid: 4a0ab548b1b39cf4b8b48726d5f4fbfe,
+    type: 3}
+  _cam: {fileID: 209217002}
 --- !u!114 &582181032
 MonoBehaviour:
   m_ObjectHideFlags: 0

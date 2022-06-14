@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
+    public Queue<RectTransform> pooledDiamond;
+
     public Queue<Rigidbody> pooledBullet;
 
     public Queue<ParticleSystem> pooledBulletEffect;
 
+    public GameObject objectPrefabDiamond;
+
     public GameObject objectPrefabBullet;
 
     public GameObject objectPrefabBulletEffect;
+
+    public int poolSizeDiamond;
 
     public int poolSizeBullet;
 
@@ -24,9 +30,22 @@ public class PoolManager : MonoBehaviour
         else
             return;
 
+        pooledDiamond = new Queue<RectTransform>();
+
         pooledBullet = new Queue<Rigidbody>();
 
         pooledBulletEffect = new Queue<ParticleSystem>();
+
+        for(int i = 0; i < poolSizeDiamond; i++)
+        {
+            GameObject effect = Instantiate(objectPrefabDiamond);
+
+            effect.SetActive(false);
+
+            effect.hideFlags = HideFlags.HideInHierarchy;
+
+            pooledDiamond.Enqueue(effect.GetComponent<RectTransform>());
+        }
 
         for (int i = 0; i < poolSizeBullet; i++)
         {
@@ -72,5 +91,18 @@ public class PoolManager : MonoBehaviour
         effect.Play();
 
         pooledBulletEffect.Enqueue(effect);
+    }
+
+    public RectTransform GetDiamondEffect()
+    {
+        RectTransform effect = pooledDiamond.Dequeue();
+
+        effect.gameObject.SetActive(true);
+
+        effect.transform.SetParent(null);
+
+        pooledDiamond.Enqueue(effect);
+
+        return effect;
     }
 }

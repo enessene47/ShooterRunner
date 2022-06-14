@@ -43,6 +43,8 @@ public class ObstacleScript : MonoBehaviour
 
                 if (_healt <= 0)
                 {
+                    UIManager.instance.DiamondCollectAnim(transform.position);
+
                     coll.enabled = false;
 
                     _healtText.gameObject.SetActive(false);

@@ -31,6 +31,8 @@ public class ObjectManager : MonoBehaviour
 
     [SerializeField] private Transform _gateParent;
 
+    [SerializeField] private Camera _cam;
+
     private List<Vector3> _obstaclePoints;
 
     private List<Vector3> _gatePoints;
@@ -83,4 +85,6 @@ public class ObjectManager : MonoBehaviour
     }
 
     public Transform GetGun(int i = 0) => Instantiate(_guns[i]).transform;
+
+    public Camera GetCam => _cam;
 }

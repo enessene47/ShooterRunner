@@ -3206,10 +3206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e964fb0d0966fd84f92cb696f6e1c551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPrefabDiamond: {fileID: 5281168581547654744, guid: c2e73d64c570a594186b05eb97815aca,
+    type: 3}
   objectPrefabBullet: {fileID: 1808265353395088, guid: 296b6c6ad62626c48aef7fa6c5e2a9a8,
     type: 3}
   objectPrefabBulletEffect: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2,
     type: 3}
+  poolSizeDiamond: 7
   poolSizeBullet: 21
 --- !u!4 &582181030
 Transform:
@@ -3253,6 +3256,7 @@ MonoBehaviour:
   _gate: {fileID: 1755429121576396, guid: 4a0ab548b1b39cf4b8b48726d5f4fbfe, type: 3}
   _obstacleParent: {fileID: 1597783715}
   _gateParent: {fileID: 501241625}
+  _cam: {fileID: 5389626674021589103}
 --- !u!114 &582181032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9942,6 +9946,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e883fe9efa20b234c89f3de7ca5d7d6c, type: 3}
+--- !u!20 &5389626674021589103 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5389626674414341405, guid: e883fe9efa20b234c89f3de7ca5d7d6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5389626674021589102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6166402125165202563
 PrefabInstance:
   m_ObjectHideFlags: 0
