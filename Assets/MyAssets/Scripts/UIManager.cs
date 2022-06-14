@@ -24,5 +24,4 @@ public class UIManager : MonoBehaviour
     }
 
     public void StartEvent() => EventManager.AwakeStartEvent();
-
 }

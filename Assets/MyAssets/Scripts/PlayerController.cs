@@ -60,18 +60,30 @@ public class PlayerController : SwipeMecLast
     {
         _userActive = true;
 
-        Vector3 force = new Vector3(0, -75, 1700);
+        //Vector3 force = new Vector3(0, -50, 2500);
 
-        float bulletSpeed = .8f - gun * .2f;
+        float bulletSpeed = .5f - gun * .1f;
 
         yield return new WaitForSeconds(.5f);
 
         while (_userActive)
         {
-            for(int i = 0; i <= gun; i++)
+            Vector3 force = new Vector3(transform.rotation.y * 2500, -50, 2500);
+
+            for (int i = 0; i <= gun; i++)
                 PoolManager.instance.GetBulletObject(_bulletPoint.position + Vector3.one * .2f * i).AddForce(force);
 
             yield return new WaitForSeconds(bulletSpeed);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            other.enabled = false;
+
+            EventManager.AwakeFailEvent();
         }
     }
 }

@@ -25,22 +25,21 @@ public class ObstacleScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == Type.Destructible && other.CompareTag("Bullet"))
+        if(other.CompareTag("Bullet"))
         {
             other.gameObject.SetActive(false);
 
-            _healt--;
+            if (type == Type.Destructible)
+            {
+                _healt--;
 
-            TextUpdate();
+                TextUpdate();
 
-            if (_healt == 0)
-                gameObject.SetActive(false);
-        }
-        else if(other.CompareTag("Player"))
-        {
-            other.enabled = false;
-
-            EventManager.AwakeFailEvent();
+                if (_healt <= 0)
+                    gameObject.SetActive(false);
+            }
+            else
+                transform.MyDOMoveZ(transform.position.z + 1, .1f);
         }    
     }
 

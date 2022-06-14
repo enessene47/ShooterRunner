@@ -24,13 +24,17 @@ namespace Mechanics
         [Header("Others")]
         private float startPosX;
         private float deltaMousePos;
-      
+
+        private float rate;
+
         bool isTouchScreen;
 
         [HideInInspector] public Vector3 desiredPos = Vector3.zero;
 
         public void BaseStart()
         {
+            rate = Screen.width / 100.0f;
+
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
                 Input.multiTouchEnabled = false;
 
@@ -52,6 +56,8 @@ namespace Mechanics
                 ResetValues();
             else if (Input.GetMouseButton(0))
                 ControlOnHold();
+            else if(Input.GetMouseButtonUp(0))
+                transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Lerp(transform.rotation.y, 0, Time.deltaTime * 8), 0));
         }
 
         void TouchControl()
@@ -65,12 +71,24 @@ namespace Mechanics
                 case TouchPhase.Moved:
                     ControlOnHold();
                     break;
+                case TouchPhase.Ended:
+                    transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Lerp(transform.rotation.y, 0, Time.deltaTime * 8), 0));
+                    break;
             }
         }
 
+        private void QuaternionLerp(Vector3 vec) => transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(vec), Time.deltaTime * 5);
+
         void ControlOnHold()
         {
-            deltaMousePos = Input.mousePosition.x - startPosX;
+            var mousePos = Input.mousePosition;
+
+            deltaMousePos = mousePos.x - startPosX;
+
+            if (mousePos.x > startPosX + rate)
+                QuaternionLerp(new Vector3(0, 30, 0));
+            else if (mousePos.x < startPosX - rate)
+                QuaternionLerp(new Vector3(0, -30, 0));
 
             PositionMethod();
         }

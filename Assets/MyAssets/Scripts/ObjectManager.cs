@@ -35,15 +35,19 @@ public class ObjectManager : MonoBehaviour
 
     private IEnumerator ObstacleCreate()
     {
-        var rnd = new System.Random();
+        var random = new System.Random();
 
-        var suffleVec = _obstaclePoints.OrderBy(item => rnd.Next());
+        var suffleVec = _obstaclePoints.OrderBy(item => random.Next());
 
         int length = _obstacles.Length;
 
         yield return new WaitForSeconds(.1f);
 
         foreach (Vector3 pos in suffleVec)
-            Instantiate(_obstacles[Random.Range(0, length)], pos, Quaternion.identity, _obstacleParent);
+        {
+            int rnd = Random.Range(0, length);
+
+            Instantiate(_obstacles[rnd], pos, _obstacles[rnd].transform.rotation, _obstacleParent);
+        }
     }
 }
