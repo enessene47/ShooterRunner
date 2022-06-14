@@ -50,6 +50,8 @@ public class PlayerController : SwipeMecLast
         {
             _userActive = false;
 
+            _guns[GunIndex].gameObject.SetActive(false);
+
             transform.MyDOMoveZ(transform.position.z - 1);
 
             Animator.SetTrigger("Fail");
@@ -58,6 +60,8 @@ public class PlayerController : SwipeMecLast
         EventManager.successEvent += () =>
         {
             _userActive = false;
+
+            _guns[GunIndex].gameObject.SetActive(false);
 
             Animator.SetTrigger("Success");
         };
@@ -91,11 +95,12 @@ public class PlayerController : SwipeMecLast
 
         while (_userActive)
         {
-
-            force = new Vector3(transform.localRotation.y * 100* yNumber, -50, 2500);
-
             for (int i = 0; i <= GunIndex; i++)
+            {
+                force = new Vector3(transform.localRotation.y * 100 * yNumber, -50, 2500);
+
                 PoolManager.instance.GetBulletObject(_bulletPoint.position + Vector3.one * .2f * i).AddForce(force);
+            }
 
             yield return new WaitForSeconds(bulletSpeed);
         }

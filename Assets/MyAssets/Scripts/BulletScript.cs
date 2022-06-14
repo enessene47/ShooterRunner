@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("EndGame"))
+        if (other.CompareTag("Player") || other.CompareTag("Bullet") || other.CompareTag("EndGame"))
             return;
         else if(other.CompareTag("Floor"))
             gameObject.SetActive(false);
