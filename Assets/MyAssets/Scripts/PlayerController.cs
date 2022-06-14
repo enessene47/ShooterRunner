@@ -30,14 +30,26 @@ public class PlayerController : SwipeMecLast
             StartCoroutine(ShotBullet(gun));
         };
 
-        EventManager.failEvent += () => _userActive = false;
+        EventManager.failEvent += () =>
+        {
+            _userActive = false;
+
+            transform.MyDOMoveZ(transform.position.z - 1);
+
+            Animator.SetTrigger("Dead");
+        };
+
         EventManager.successEvent += () => _userActive = false;
     }
 
     private void FixedUpdate()
     {
         if (!_userActive)
+        {
+            ResetValues();
+
             return;
+        }
 
         obj.position += Vector3.forward * Time.deltaTime * _speed;
 
@@ -48,16 +60,18 @@ public class PlayerController : SwipeMecLast
     {
         _userActive = true;
 
-        Vector3 force = new Vector3(0, 75, 1500);
+        Vector3 force = new Vector3(0, -75, 1700);
 
         float bulletSpeed = .8f - gun * .2f;
 
-        while(_userActive)
-        {
-            yield return new WaitForSeconds(bulletSpeed);
+        yield return new WaitForSeconds(.5f);
 
+        while (_userActive)
+        {
             for(int i = 0; i <= gun; i++)
                 PoolManager.instance.GetBulletObject(_bulletPoint.position + Vector3.one * .2f * i).AddForce(force);
+
+            yield return new WaitForSeconds(bulletSpeed);
         }
     }
 }

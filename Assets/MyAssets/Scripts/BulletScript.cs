@@ -8,9 +8,9 @@ public class BulletScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             return;
+        else if(other.CompareTag("Floor"))
+            gameObject.SetActive(false);
 
         PoolManager.instance.PlayBulletEffect(transform.position);
-
-        gameObject.SetActive(false);
     }
 }
