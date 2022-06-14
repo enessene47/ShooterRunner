@@ -15,12 +15,15 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-
     [SerializeField] private GameObject _startCanvas;
+    [SerializeField] private GameObject _failCanvas;
+    [SerializeField] private GameObject _successCanvas;
 
     void Start()
     {
         EventManager.startEvent += () => _startCanvas.SetActive(false);
+        EventManager.failEvent += () => _failCanvas.SetActive(true);
+        EventManager.successEvent += () => _successCanvas.SetActive(true);
     }
 
     public void StartEvent() => EventManager.AwakeStartEvent();

@@ -16,7 +16,21 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    public void ReryActive() => SceneManager.LoadScene(0);
+    public void RertyLevel() => SceneManager.LoadScene(0);
+
+    public void NextLevel()
+    {
+        int index = PlayerPrefs.GetInt("Level", 0);
+
+        if(index == 0)
+        {
+            index++;
+
+            PlayerPrefs.SetInt("Level", index);
+        }
+
+        SceneManager.LoadScene(index);
+    }
 
     public int ActiveScene => SceneManager.GetActiveScene().buildIndex;
 }

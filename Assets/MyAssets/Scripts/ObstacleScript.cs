@@ -23,7 +23,7 @@ public class ObstacleScript : MonoBehaviour
         {
             coll = GetComponent<Collider>();
 
-            _healt = Random.Range(1, 5);
+            _healt = Random.Range(1, 4);
 
             TextUpdate();
         }
