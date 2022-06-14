@@ -42,7 +42,7 @@ public class PlayerController : SwipeMecLast
         EventManager.successEvent += () => _userActive = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!_userActive)
         {
@@ -60,15 +60,15 @@ public class PlayerController : SwipeMecLast
     {
         _userActive = true;
 
-        //Vector3 force = new Vector3(0, -50, 2500);
-
         float bulletSpeed = .5f - gun * .1f;
+
+        Vector3 force = Vector3.zero;
 
         yield return new WaitForSeconds(.5f);
 
         while (_userActive)
         {
-            Vector3 force = new Vector3(transform.rotation.y * 2500, -50, 2500);
+            force = new Vector3(transform.rotation.y * 2500, -50, 2500);
 
             for (int i = 0; i <= gun; i++)
                 PoolManager.instance.GetBulletObject(_bulletPoint.position + Vector3.one * .2f * i).AddForce(force);

@@ -57,7 +57,7 @@ namespace Mechanics
             else if (Input.GetMouseButton(0))
                 ControlOnHold();
             else if(Input.GetMouseButtonUp(0))
-                transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Lerp(transform.rotation.y, 0, Time.deltaTime * 8), 0));
+                transform.MyDORotate(Vector3.zero);
         }
 
         void TouchControl()
@@ -72,7 +72,7 @@ namespace Mechanics
                     ControlOnHold();
                     break;
                 case TouchPhase.Ended:
-                    transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Lerp(transform.rotation.y, 0, Time.deltaTime * 8), 0));
+                    transform.MyDORotate(Vector3.zero);
                     break;
             }
         }
