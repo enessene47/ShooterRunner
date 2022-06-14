@@ -1287,14 +1287,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e964fb0d0966fd84f92cb696f6e1c551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabDiamond: {fileID: 5281168581547654744, guid: c2e73d64c570a594186b05eb97815aca,
+  _objectPrefabDiamond: {fileID: 5281168581547654744, guid: c2e73d64c570a594186b05eb97815aca,
     type: 3}
-  objectPrefabBullet: {fileID: 1808265353395088, guid: 296b6c6ad62626c48aef7fa6c5e2a9a8,
+  _objectPrefabBullet: {fileID: 1808265353395088, guid: 296b6c6ad62626c48aef7fa6c5e2a9a8,
     type: 3}
-  objectPrefabBulletEffect: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2,
+  _objectPrefabBulletEffect: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2,
     type: 3}
-  poolSizeDiamond: 7
-  poolSizeBullet: 21
+  _poolSizeDiamond: 7
+  _poolSizeBullet: 21
 --- !u!4 &582181030
 Transform:
   m_ObjectHideFlags: 0
