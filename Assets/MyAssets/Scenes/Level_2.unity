@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0f1242f9e1f77864eafa8417038fb186,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -9953,6 +9954,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 582181032}
+    - target: {fileID: 6166402125120102737, guid: cc90f8d0eb10c9e4a950da0bf8aff70d,
+        type: 3}
+      propertyPath: _levelText
+      value: 
+      objectReference: {fileID: 6166402125165202564}
     - target: {fileID: 6166402125120102738, guid: cc90f8d0eb10c9e4a950da0bf8aff70d,
         type: 3}
       propertyPath: m_RootOrder
@@ -10020,6 +10026,18 @@ PrefabInstance:
       objectReference: {fileID: 582181032}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc90f8d0eb10c9e4a950da0bf8aff70d, type: 3}
+--- !u!114 &6166402125165202564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2523288150022913312, guid: cc90f8d0eb10c9e4a950da0bf8aff70d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6166402125165202563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7813457058584992426
 PrefabInstance:
   m_ObjectHideFlags: 0

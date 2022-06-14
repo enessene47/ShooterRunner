@@ -91,13 +91,17 @@ public class PlayerController : SwipeMecLast
 
         float yNumber = 1500.0f / 30.0f;
 
+        float angle = transform.eulerAngles.y;
+
         yield return new WaitForSeconds(.5f);
 
         while (_userActive)
         {
             for (int i = 0; i <= GunIndex; i++)
             {
-                force = new Vector3(transform.localRotation.y * 100 * yNumber, -50, 2500);
+                angle = transform.eulerAngles.y;
+
+                force = new Vector3((angle > 180 ? angle - 360 : angle) * yNumber, -50, 2500);
 
                 PoolManager.instance.GetBulletObject(_bulletPoint.position + Vector3.one * .2f * i).AddForce(force);
             }

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    public void RertyLevel() => SceneManager.LoadScene(0);
+    public void RertyLevel() => SceneManager.LoadScene(ActiveScene);
 
     public void NextLevel()
     {
@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
             PlayerPrefs.SetInt("Level", index);
         }
+
+        PlayerPrefs.SetInt("FakeLevel", 1 + PlayerPrefs.GetInt("FakeLevel"));
 
         SceneManager.LoadScene(index);
     }

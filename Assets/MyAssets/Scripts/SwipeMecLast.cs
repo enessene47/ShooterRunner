@@ -88,8 +88,8 @@ namespace Mechanics
                 QuaternionLerp(new Vector3(0, 30, 0));
             else if (mousePos.x < startPosX - rate)
                 QuaternionLerp(new Vector3(0, -30, 0));
-            else if (mousePos.x == startPosX)
-                QuaternionLerp(Vector3.zero, 2);
+            else if (deltaMousePos == 0)
+                QuaternionLerp(Vector3.zero, 1);
 
             PositionMethod();
         }
@@ -108,7 +108,6 @@ namespace Mechanics
 
             ResetValues();
         }
-
         private void QuaternionLerp(Vector3 vec, float speed = 5) => transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(vec), Time.deltaTime * speed);
     }
 }
