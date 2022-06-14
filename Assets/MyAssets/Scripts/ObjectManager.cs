@@ -16,8 +16,6 @@ public class ObjectManager : MonoBehaviour
             instance = this;
 
             EventManager.ResetEvent();
-
-            _obstaclePoints = new List<Vector3>();
         }
     }
 
@@ -27,15 +25,32 @@ public class ObjectManager : MonoBehaviour
 
     [SerializeField] private GameObject[] _guns;
 
+    [SerializeField] private GameObject _gate;
+
     [SerializeField] private Transform _obstacleParent;
+
+    [SerializeField] private Transform _gateParent;
 
     private List<Vector3> _obstaclePoints;
 
-    private int _obstacleCount;
+    private List<Vector3> _gatePoints;
 
     private void Start() => StartCoroutine(ObstacleCreate());
 
-    public void AddObstaclePoint(Vector3 vec) => _obstaclePoints.Add(vec);
+    public void AddObstaclePoint(Vector3 vec)
+    {
+        if (_obstaclePoints == null)
+            _obstaclePoints = new List<Vector3>();
+
+        _obstaclePoints.Add(vec);
+    }
+    public void AddGatePoint(Vector3 vec)
+    {
+        if (_gatePoints == null)
+            _gatePoints = new List<Vector3>();
+
+        _gatePoints.Add(vec);
+    }
 
     private IEnumerator ObstacleCreate()
     {
@@ -47,13 +62,23 @@ public class ObjectManager : MonoBehaviour
 
         int length = _obstacles.Length;
 
-        _obstacleCount = GameManager.instance.ActiveScene == 0 ? Random.Range(20, 30) : Random.Range(150, 200);
+        int _obstacleCount = Random.Range((int) (suffleVec.Count * .8f), suffleVec.Count);
 
         for (int i = 0; i < _obstacleCount; i++)
         {
             int rnd = Random.Range(0, length);
 
             Instantiate(_obstacles[rnd], suffleVec[i], _obstacles[rnd].transform.rotation, _obstacleParent);
+        }
+
+        if (_gatePoints != null)
+        {
+            suffleVec = _gatePoints.OrderBy(item => random.Next()).ToList();
+
+            length = Random.Range((int)(suffleVec.Count * .8f), suffleVec.Count);
+
+            for(int i = 0; i < length; i++)
+                Instantiate(_gate, suffleVec[i], _gate.transform.rotation, _gateParent);
         }
     }
 

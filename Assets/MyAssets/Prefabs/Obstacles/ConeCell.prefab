@@ -308,6 +308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  rigidbodies:
+  - {fileID: 1400414368}
+  - {fileID: 1320766261}
+  - {fileID: 283457520}
+  - {fileID: 1205426951}
   _healtText: {fileID: 9203882204604964361}
 --- !u!1 &4469798886660102135
 GameObject:

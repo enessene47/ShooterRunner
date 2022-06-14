@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstaclePoint : MonoBehaviour
 {
-    void Start() => ObjectManager.instance.AddObstaclePoint(transform.position);
+    private void Start() => ObjectManager.instance.AddObstaclePoint(transform.position);
 
     private void OnDrawGizmos()
     {
